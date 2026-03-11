@@ -226,37 +226,37 @@ function App() {
 
       <div className="overlay"></div>
 
-      <nav className="navbar">
-        <div className="nav-container">
-          <a href="/" className="logo">
-            <img src={logo} alt="VERICRUX" className="logo-img" />
-          </a>
-          <div className="nav-links">
-            <a href="/shop">Shop</a>
-            <a href="/blog">Blog</a>
-            <a href="/contact">Contact</a>
-            <a href="/shop" className="shop-btn">Shop Now</a>
-          </div>
-          <button
-            className="hamburger md-hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? "X" : "="}
-          </button>
-        </div>
+     <nav className="navbar">
+  <div className="nav-container">
+    <a href="/" className="logo">
+      <img src={logo} alt="VERICRUX" className="logo-img" />
+    </a>
+    <div className="nav-links">
+      <a href="https://vericrux.myshopify.com/?pb=0">Shop</a>
+      <a href="/blog">Blog</a>
+      <a href="/contact">Contact</a>
+      <a href="https://vericrux.myshopify.com/?pb=0" className="shop-btn">Shop Now</a>
+    </div>
+    <button
+      className={`hamburger md-hidden ${mobileMenuOpen ? 'is-open' : ''}`}
+      onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+      aria-label="Toggle menu"
+    >
+      <span className="ham-line"></span>
+      <span className="ham-line"></span>
+      <span className="ham-line"></span>
+    </button>
+  </div>
 
-        {mobileMenuOpen && (
-          <div className="mobile-menu open">
-            <div className="mobile-menu-inner">
-              <a href="/shop" onClick={() => setMobileMenuOpen(false)}>Shop</a>
-              <a href="/blog" onClick={() => setMobileMenuOpen(false)}>Blog</a>
-              <a href="/contact" onClick={() => setMobileMenuOpen(false)}>Contact</a>
-              <a href="/shop" className="shop-btn" onClick={() => setMobileMenuOpen(false)}>Shop Now</a>
-            </div>
-          </div>
-        )}
-      </nav>
+  <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
+    <div className="mobile-menu-inner">
+      <a href="https://vericrux.myshopify.com/?pb=0" className="mob-link" style={{ '--i': 0 }} onClick={() => setMobileMenuOpen(false)}>Shop</a>
+      <a href="/blog" className="mob-link" style={{ '--i': 1 }} onClick={() => setMobileMenuOpen(false)}>Blog</a>
+      <a href="/contact" className="mob-link" style={{ '--i': 2 }} onClick={() => setMobileMenuOpen(false)}>Contact</a>
+      <a href="https://vericrux.myshopify.com/?pb=0" className="mob-link shop-btn" style={{ '--i': 3 }} onClick={() => setMobileMenuOpen(false)}>Shop Now</a>
+    </div>
+  </div>
+</nav>
 
       <section className="hero" style={{ position: "relative", overflow: "hidden" }}>
         <HeroGlobe />
@@ -274,7 +274,7 @@ function App() {
             Where pressure reveals strength.
           </p>
           <div className="cta-buttons">
-            <a href="/shop" className="primary-btn">Explore Gear</a>
+            <a href="https://vericrux.myshopify.com/?pb=0" className="primary-btn">Explore Gear</a>
             <a href="/blog" className="outline-btn">Read the Blog</a>
           </div>
         </div>
