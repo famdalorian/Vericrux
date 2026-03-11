@@ -1,0 +1,500 @@
+/* VERICRUX - Final CSS with tsParticles */
+/* Neon yellow particles + dark galaxy background */
+/* Cleaned: removed duplicate text-stroke properties */
+
+:root {
+  --black:      #000000;
+  --dark:       #0a0a0a;
+  --grey:       #1a1a1a;
+  --light:      #e0e0e0;
+  --neon:       #dfff00;
+  --neon-dark:  #ccee00;
+  --neon-glow:  rgba(223, 255, 0, 0.6);
+  --font-sans:  system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: "Bebas Neue", Impact, Arial Black, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--light);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* tsParticles canvas – full screen background */
+#tsparticles {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+}
+
+/* Dark overlay for text readability over particles */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.68);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ============================================ */
+/* Text Definitions + Pulsing Neon Glow        */
+/* ============================================ */
+
+.logo,
+.hero-title .text-neon,
+footer .logo,
+.featured-heading {
+  -webkit-text-stroke: 2px #000;
+  color: var(--neon);
+  text-shadow: 
+    0 0 10px var(--neon),
+    0 0 20px var(--neon),
+    0 0 40px var(--neon-glow);
+  animation: neonPulse 5s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+  0%   { text-shadow: 0 0 10px var(--neon), 0 0 20px var(--neon), 0 0 40px var(--neon-glow); }
+  100% { text-shadow: 0 0 20px var(--neon), 0 0 40px var(--neon), 0 0 80px var(--neon-glow); }
+}
+
+.text-white-defined {
+  -webkit-text-stroke: 2px #000;
+  color: #ffffff;
+  text-shadow: 
+    0 0 5px rgba(255,255,255,0.7),
+    0 0 15px rgba(255,255,255,0.5),
+    2px 2px 0 #111,
+    -1px -1px 0 #333;
+  font-weight: 900;
+}
+
+.featured-heading span {
+  color: #ffffff;
+  -webkit-text-stroke: 2px #000;
+  text-shadow: 
+    0 0 5px rgba(255,255,255,0.6),
+    0 0 15px rgba(255,255,255,0.4),
+    0 0 30px rgba(255,255,255,0.2);
+}
+
+/* ============================================ */
+/* Logo (navbar + hero – floating)             */
+/* ============================================ */
+
+.logo-img,
+.hero-logo {
+  width: auto;
+  display: block;
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.logo-img {
+  height: 42px;
+  max-height: 60px;
+}
+
+.hero-logo {
+  height: 90px;
+  max-height: 140px;
+  margin: 0 auto 1.5rem;
+  filter: drop-shadow(0 8px 20px rgba(223, 255, 0, 0.5));
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-16px) rotate(1.5deg); }
+}
+
+.logo:hover .logo-img,
+.hero-content:hover .hero-logo {
+  transform: scale(1.1);
+  filter: drop-shadow(0 12px 30px rgba(223, 255, 0, 0.7));
+}
+
+/* ============================================ */
+/* Navbar                                     */
+/* ============================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(223,255,0,0.15);
+}
+
+.nav-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  color: var(--light);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--neon);
+}
+
+.shop-btn {
+  background-color: var(--neon);
+  color: #000000;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(223, 255, 0, 0.25);
+  transition: all 0.3s ease;
+  -webkit-text-stroke: 0.7px #000;
+  paint-order: stroke fill;
+  text-shadow: 0 0 3px rgba(0,0,0,0.6);
+}
+
+.shop-btn:hover {
+  background-color: var(--neon-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(223, 255, 0, 0.35);
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  color: var(--neon);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.md-hidden {
+  display: block;
+}
+
+@media (min-width: 769px) {
+  .md-hidden { display: none; }
+  .nav-links { display: flex; }
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  background-color: var(--black);
+  border-bottom: 1px solid var(--grey);
+}
+
+.mobile-menu.open {
+  display: block;
+}
+
+.mobile-menu-inner {
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mobile-menu a {
+  font-size: 1.5rem;
+  color: var(--light);
+  text-decoration: none;
+}
+
+.mobile-menu .shop-btn {
+  width: 80%;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* ============================================ */
+/* Hero                                       */
+/* ============================================ */
+
+.hero {
+  position: relative;
+  padding: 14rem 1.5rem 8rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(50px);
+  animation: fadeUp 1.4s ease-out forwards 0.4s;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(4rem, 14vw, 9rem);
+  line-height: 0.9;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.2s ease-out forwards 0.7s;
+}
+
+.hero-tagline {
+  font-size: clamp(1.5rem, 6vw, 2.4rem);
+  font-weight: 400;
+  opacity: 0.92;
+  line-height: 1.4;
+  margin: 0 auto 3rem;
+  max-width: 900px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1.2s ease-out forwards 1s;
+}
+
+.br-sm {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .br-sm { display: inline; }
+}
+
+.cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease-out forwards 1.3s;
+}
+
+@media (min-width: 640px) {
+  .cta-buttons { flex-direction: row; }
+}
+
+.primary-btn,
+.outline-btn {
+  padding: 1.3rem 3rem;
+  border-radius: 9999px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease-out forwards 1.5s;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, var(--neon), var(--neon-dark));
+  color: var(--black);
+  box-shadow: 0 8px 25px rgba(223, 255, 0, 0.4);
+}
+
+.primary-btn:hover {
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 16px 40px rgba(223, 255, 0, 0.6);
+}
+
+.outline-btn {
+  border: 2px solid var(--neon);
+  color: var(--neon);
+}
+
+.outline-btn:hover {
+  background: var(--neon);
+  color: var(--black);
+  transform: translateY(-6px) scale(1.06);
+}
+
+/* ============================================ */
+/* Brand Focus Section                        */
+/* ============================================ */
+
+.featured {
+  padding: 6rem 1.5rem;
+  background-color: var(--grey);
+  position: relative;
+  z-index: 3;
+}
+
+.featured h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 10vw, 6rem);
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.section-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.brand-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .brand-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.brand-card {
+  background-color: rgba(10,10,10,0.88);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  transition: all 0.5s ease;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(223,255,0,0.15);
+}
+
+.brand-card:hover {
+  transform: translateY(-16px);
+  box-shadow: 0 25px 60px rgba(223, 255, 0, 0.2);
+  border-color: var(--neon);
+}
+
+.brand-placeholder {
+  height: 340px;
+  background: linear-gradient(135deg, #111, #000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6rem;
+  font-weight: 900;
+  color: rgba(223, 255, 0, 0.18);
+  transition: color 0.6s ease;
+  font-family: var(--font-heading);
+}
+
+.brand-card:hover .brand-placeholder {
+  color: rgba(223, 255, 0, 0.45);
+}
+
+.brand-info {
+  padding: 2rem;
+}
+
+.brand-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  -webkit-text-stroke: 1px #000;
+  text-shadow: 0 0 6px rgba(0,0,0,0.9);
+}
+
+.brand-info p {
+  opacity: 0.85;
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+  -webkit-text-stroke: 0.6px #000;
+  text-shadow: 0 0 4px rgba(0,0,0,0.8);
+}
+
+.card-link {
+  color: var(--neon);
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.card-link:hover {
+  opacity: 1;
+  text-shadow: 0 0 12px var(--neon);
+}
+
+.collection-link {
+  color: var(--neon);
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 2px solid var(--neon);
+  padding-bottom: 0.3rem;
+  transition: opacity 0.2s ease;
+}
+
+.collection-link:hover {
+  opacity: 0.8;
+}
+
+/* ============================================ */
+/* Footer                                     */
+/* ============================================ */
+
+footer {
+  background-color: var(--black);
+  padding: 5rem 1.5rem 3rem;
+  text-align: center;
+  border-top: 1px solid rgba(223,255,0,0.1);
+  position: relative;
+  z-index: 3;
+}
+
+footer .logo {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  opacity: 0.8;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--light);
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.footer-links a:hover {
+  color: var(--neon);
+}
+
+.copyright {
+  opacity: 0.6;
+  font-size: 0.9rem;
+}
